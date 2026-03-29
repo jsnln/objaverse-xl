@@ -166,8 +166,8 @@ class GitHubDownloader(ObjaverseSource):
                 command,
                 cwd=cwd,
                 check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
+                # stdout=subprocess.DEVNULL,
+                # stderr=subprocess.DEVNULL,
             )
             return True
         except subprocess.CalledProcessError as e:

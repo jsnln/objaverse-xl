@@ -307,7 +307,8 @@ class SketchfabDownloader(ObjaverseSource):
             A tuple of the uid and the path to where the downloaded object. If
             download_dir is None, the path will be None.
         """
-        hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{hf_object_path}"
+        # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{hf_object_path}"
+        hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/{hf_object_path}"
 
         with tempfile.TemporaryDirectory() as temp_dir:
             # download the file locally
@@ -580,7 +581,8 @@ class SketchfabDownloader(ObjaverseSource):
         Returns:
             A dictionary mapping the LVIS category to the list of uids in that category.
         """
-        hf_url = "https://huggingface.co/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
+        # hf_url = "https://huggingface.co/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
+        hf_url = "https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
 
         download_path = os.path.join(
             download_dir, "hf-objaverse-v1", "lvis-annotations.json.gz"
