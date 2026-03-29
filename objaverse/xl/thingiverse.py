@@ -37,7 +37,8 @@ class ThingiverseDownloader(ObjaverseSource):
             pd.DataFrame: The annotations, which includes the columns "thingId", "fileId",
                 "filename", and "license".
         """
-        remote_url = "https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/thingiverse/thingiverse.parquet"
+        # remote_url = "https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/thingiverse/thingiverse.parquet"
+        remote_url = "https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/thingiverse/thingiverse.parquet"
         download_path = os.path.join(download_dir, "thingiverse", "thingiverse.parquet")
         fs, path = fsspec.core.url_to_fs(download_path)
 

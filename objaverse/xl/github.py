@@ -93,7 +93,8 @@ class GitHubDownloader(ObjaverseSource):
                 "sha256", and "metadata".
         """
         return cls._get_annotations(
-            url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/github/github.parquet",
+            # url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/github/github.parquet",
+            url="https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/github/github.parquet",
             filename="github.parquet",
             download_dir=download_dir,
             refresh=refresh,
@@ -118,7 +119,8 @@ class GitHubDownloader(ObjaverseSource):
                 "sha256", and "metadata".
         """
         return cls._get_annotations(
-            url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/github/alignment.parquet",
+            # url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/github/alignment.parquet",
+            url="https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/github/alignment.parquet",
             filename="alignment.parquet",
             download_dir=download_dir,
             refresh=refresh,

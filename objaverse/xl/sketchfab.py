@@ -81,7 +81,8 @@ class SketchfabDownloader(ObjaverseSource):
                 "filename", and "license".
         """
         return cls._get_annotations(
-            url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/sketchfab/sketchfab.parquet",
+            # url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/sketchfab/sketchfab.parquet",
+            url="https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/sketchfab/sketchfab.parquet",
             filename="sketchfab.parquet",
             download_dir=download_dir,
             refresh=refresh,
@@ -105,7 +106,8 @@ class SketchfabDownloader(ObjaverseSource):
                 "filename", and "license".
         """
         return cls._get_annotations(
-            url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/sketchfab/alignment.parquet",
+            # url="https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/sketchfab/alignment.parquet",
+            url="https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/sketchfab/alignment.parquet",
             filename="alignment.parquet",
             download_dir=download_dir,
             refresh=refresh,
@@ -167,7 +169,8 @@ class SketchfabDownloader(ObjaverseSource):
                 path = os.path.join(metadata_path, f"{i_id}.json.gz")
 
                 # get the url to the remote json file
-                hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
+                # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
+                hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
 
                 # download the file to a tmp path to avoid partial downloads on interruption
                 tmp_path = f"{path}.tmp"
@@ -212,7 +215,8 @@ class SketchfabDownloader(ObjaverseSource):
         # download the object_paths file if it doesn't exist
         fs, path = fsspec.core.url_to_fs(local_path)
         if not fs.exists(path):
-            hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
+            # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
+            hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
             fs.makedirs(os.path.dirname(path), exist_ok=True)
 
             # download the file to a tmp path to avoid partial downloads on interruption

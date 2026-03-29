@@ -41,7 +41,8 @@ def load_annotations(uids: Optional[List[str]] = None) -> Dict[str, Any]:
         json_file = f"{i_id}.json.gz"
         local_path = os.path.join(metadata_path, json_file)
         if not os.path.exists(local_path):
-            hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
+            # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
+            hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/metadata/{i_id}.json.gz"
             # wget the file and put it in local_path
             os.makedirs(os.path.dirname(local_path), exist_ok=True)
             urllib.request.urlretrieve(hf_url, local_path)
@@ -67,7 +68,8 @@ def _load_object_paths() -> Dict[str, str]:
     object_paths_file = "object-paths.json.gz"
     local_path = os.path.join(_VERSIONED_PATH, object_paths_file)
     if not os.path.exists(local_path):
-        hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
+        # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
+        hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/{object_paths_file}"
         # wget the file and put it in local_path
         os.makedirs(os.path.dirname(local_path), exist_ok=True)
         urllib.request.urlretrieve(hf_url, local_path)
@@ -104,7 +106,8 @@ def _download_object(
     local_path = os.path.join(_VERSIONED_PATH, object_path)
     tmp_local_path = os.path.join(_VERSIONED_PATH, object_path + ".tmp")
     hf_url = (
-        f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_path}"
+        # f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{object_path}"
+        f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/{object_path}"
     )
     # wget the file and put it in local_path
     os.makedirs(os.path.dirname(tmp_local_path), exist_ok=True)
@@ -201,7 +204,8 @@ def load_lvis_annotations() -> Dict[str, List[str]]:
     Returns:
         A dictionary mapping the LVIS category to the list of uids in that category.
     """
-    hf_url = "https://huggingface.co/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
+    # hf_url = "https://huggingface.co/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
+    hf_url = "https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/lvis-annotations.json.gz"
     local_path = os.path.join(_VERSIONED_PATH, "lvis-annotations.json.gz")
     os.makedirs(os.path.dirname(local_path), exist_ok=True)
     if not os.path.exists(local_path):

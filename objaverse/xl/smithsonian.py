@@ -43,7 +43,8 @@ class SmithsonianDownloader(ObjaverseSource):
 
         # download the parquet file if it doesn't exist
         if refresh or not fs.exists(path):
-            url = "https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/smithsonian/smithsonian.parquet"
+            # url = "https://huggingface.co/datasets/allenai/objaverse-xl/resolve/main/smithsonian/smithsonian.parquet"
+            url = "https://hf-mirror.com/datasets/allenai/objaverse-xl/resolve/main/smithsonian/smithsonian.parquet"
             logger.info(f"Downloading {url} to {filename}")
             response = requests.get(url)
             response.raise_for_status()
