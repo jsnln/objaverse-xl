@@ -170,10 +170,11 @@ class GitHubDownloader(ObjaverseSource):
                 # stderr=subprocess.DEVNULL,
             )
             return True
-        except subprocess.CalledProcessError as e:
-            logger.error("Error:", e)
-            logger.error(e.stdout)
-            logger.error(e.stderr)
+        except Exception as e:
+            print(f'[Print LOG]: {e}')
+            # logger.error("Error:", e)
+            # logger.error(e.stdout)
+            # logger.error(e.stderr)
             return False
 
     @classmethod
@@ -455,18 +456,23 @@ class GitHubDownloader(ObjaverseSource):
         ) = args
         repo_id = "/".join(repo_id_hash.split("/")[:2])
         commit_hash = repo_id_hash.split("/")[2]
-        return cls._process_repo(
-            repo_id=repo_id,
-            fs=fs,
-            base_dir=base_dir,
-            save_repo_format=save_repo_format,
-            expected_objects=expected_objects,
-            handle_found_object=handle_found_object,
-            handle_modified_object=handle_modified_object,
-            handle_missing_object=handle_missing_object,
-            handle_new_object=handle_new_object,
-            commit_hash=commit_hash,
-        )
+        try:
+            out = cls._process_repo(
+                repo_id=repo_id,
+                fs=fs,
+                base_dir=base_dir,
+                save_repo_format=save_repo_format,
+                expected_objects=expected_objects,
+                handle_found_object=handle_found_object,
+                handle_modified_object=handle_modified_object,
+                handle_missing_object=handle_missing_object,
+                handle_new_object=handle_new_object,
+                commit_hash=commit_hash,
+            )
+        except Exception as e:
+            print(f'[ERROR] error for {repo_id}: {e}')
+            out = {}
+        return out
 
     @classmethod
     def _process_group(cls, group):
