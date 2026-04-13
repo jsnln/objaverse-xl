@@ -195,7 +195,7 @@ class ThingiverseDownloader(ObjaverseSource):
                 )
             return file_identifier, None
 
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with tempfile.TemporaryDirectory(dir=os.environ.get('OXL_TMP_DL_DIR')) as temp_dir:
             temp_path = os.path.join(temp_dir, filename)
             temp_path_tmp = temp_path + ".tmp"
 

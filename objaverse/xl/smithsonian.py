@@ -144,7 +144,7 @@ class SmithsonianDownloader(ObjaverseSource):
         """
         uid = get_uid_from_str(file_identifier)
 
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with tempfile.TemporaryDirectory(dir=os.environ.get('OXL_TMP_DL_DIR')) as temp_dir:
             temp_path = os.path.join(temp_dir, f"{uid}.glb")
             temp_path_tmp = f"{temp_path}.tmp"
 

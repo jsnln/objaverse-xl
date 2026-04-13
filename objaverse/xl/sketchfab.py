@@ -310,7 +310,7 @@ class SketchfabDownloader(ObjaverseSource):
         # hf_url = f"https://huggingface.co/datasets/allenai/objaverse/resolve/main/{hf_object_path}"
         hf_url = f"https://hf-mirror.com/datasets/allenai/objaverse/resolve/main/{hf_object_path}"
 
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with tempfile.TemporaryDirectory(dir=os.environ.get('OXL_TMP_DL_DIR')) as temp_dir:
             # download the file locally
             temp_path = os.path.join(temp_dir, hf_object_path)
             os.makedirs(os.path.dirname(temp_path), exist_ok=True)

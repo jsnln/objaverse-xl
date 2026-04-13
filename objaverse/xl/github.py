@@ -209,12 +209,19 @@ class GitHubDownloader(ObjaverseSource):
         org, repo = repo_id.split("/")
 
         out = {}
-        with tempfile.TemporaryDirectory() as temp_dir:
+        with tempfile.TemporaryDirectory(dir=os.environ.get('OXL_TMP_DL_DIR')) as temp_dir:
             # clone the repo to a temp directory
             target_directory = os.path.join(temp_dir, repo)
-            successful_clone = cls._git_shallow_clone(
-                f"https://github.com/{org}/{repo}.git", target_directory
-            )
+            
+            if os.environ.get('USE_GH_PROXY') == '1':
+                successful_clone = cls._git_shallow_clone(
+                    f"https://gh-proxy.com/https://github.com/{org}/{repo}.git", target_directory
+                )
+            else:
+                successful_clone = cls._git_shallow_clone(
+                    f"https://github.com/{org}/{repo}.git", target_directory
+                )
+
             if not successful_clone:
                 logger.error(f"Could not clone {repo_id}")
                 if handle_missing_object is not None:
